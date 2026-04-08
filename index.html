@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OBNAZHIMOST` — Anna Godunova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff; --ink:#0a0a0a; --mute:#6b6b6b; --line:#0a0a0a;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Inter", -apple-system, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%;height:auto;filter:grayscale(100%) contrast(1.02)}
+  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--ink)}
+  a:hover{opacity:.6}
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 32px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid #eee;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  header .brand{font-weight:500}
+  header nav button{
+    background:none;border:none;color:var(--mute);cursor:pointer;
+    font:inherit;letter-spacing:.18em;text-transform:uppercase;
+    padding:4px 6px;margin-left:4px;
+  }
+  header nav button.active{color:var(--ink);border-bottom:1px solid var(--ink)}
+
+  main{padding-top:60px}
+
+  section{padding:140px 8vw;border-bottom:1px solid #eee}
+  section.hero{padding:24vh 8vw 18vh;text-align:left}
+  section.dark{background:#0a0a0a;color:#f4f4f4;border-bottom-color:#0a0a0a}
+  section.dark .eyebrow,section.dark .meta{color:#888}
+  section.dark a{border-bottom-color:#f4f4f4}
+
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--mute);margin-bottom:24px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(56px,12vw,180px);line-height:.95;letter-spacing:-.02em;
+    margin-bottom:32px;
+  }
+  h1 .tick{font-size:.5em;vertical-align:super;opacity:.5}
+  h2{
+    font-family:var(--serif);font-weight:300;font-style:italic;
+    font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.01em;
+    margin-bottom:40px;max-width:18ch;
+  }
+  h3{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:500;margin:48px 0 16px;
+  }
+  p{
+    font-family:var(--serif);font-size:clamp(19px,1.6vw,24px);
+    line-height:1.55;font-weight:300;max-width:62ch;margin-bottom:1.1em;
+  }
+  p.small{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--mute);max-width:60ch}
+  blockquote{
+    font-family:var(--serif);font-style:italic;font-weight:300;
+    font-size:clamp(28px,3.4vw,46px);line-height:1.25;
+    max-width:24ch;margin:0 auto;text-align:center;
+  }
+  ul{font-family:var(--serif);font-size:clamp(18px,1.5vw,22px);line-height:1.7;list-style:none;max-width:62ch}
+  ul li{padding-left:24px;position:relative;margin-bottom:.5em}
+  ul li::before{content:"—";position:absolute;left:0;opacity:.5}
+
+  .grid{display:grid;gap:48px;align-items:start}
+  .grid.two{grid-template-columns:1fr 1fr}
+  .grid.text-img{grid-template-columns:1fr 1.1fr;gap:80px;align-items:center}
+  .grid.img-text{grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+  @media(max-width:860px){
+    section{padding:90px 7vw}
+    .grid.two,.grid.text-img,.grid.img-text{grid-template-columns:1fr;gap:40px}
+    h2{max-width:none}
+  }
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:40px}
+  @media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+  .meta{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+
+  footer{padding:80px 8vw 60px;text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+  footer a{border:none}
+  footer .name{font-family:var(--serif);font-style:italic;font-size:24px;text-transform:none;letter-spacing:0;color:var(--ink);display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">OBNAZHIMOST<span style="opacity:.4">`</span></div>
+  <nav>
+    <button data-lang="en" class="active">EN</button>
+    <button data-lang="pt">PT</button>
+    <button data-lang="ru">RU</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow" data-i18n="hero_eyebrow"></div>
+  <h1>Obnazhimost<span class="tick">`</span></h1>
+  <p data-i18n="hero_sub" style="font-style:italic;max-width:30ch"></p>
+  <p class="meta" style="margin-top:48px">Anna Godunova · <a href="https://www.godunova.art" target="_blank">www.godunova.art</a></p>
+  <div style="margin-top:80px"><img src="img/image10.jpg" alt=""></div>
+</section>
+
+<!-- CONCEPT -->
+<section>
+  <div class="grid img-text">
+    <img src="img/image26.jpg" alt="">
+    <div>
+      <div class="eyebrow" data-i18n="s_concept"></div>
+      <h2 data-i18n="concept_h"></h2>
+      <p data-i18n="concept_p1"></p>
+      <p data-i18n="concept_p2"></p>
+      <p data-i18n="concept_p3"></p>
+      <p data-i18n="concept_p4"></p>
+    </div>
+  </div>
+</section>
+
+<!-- THE WORD -->
+<section>
+  <div class="grid text-img">
+    <div>
+      <div class="eyebrow" data-i18n="s_word"></div>
+      <h2 data-i18n="word_h"></h2>
+      <p data-i18n="word_p1"></p>
+      <p data-i18n="word_p2"></p>
+      <ul>
+        <li data-i18n="word_l1"></li>
+        <li data-i18n="word_l2"></li>
+        <li data-i18n="word_l3"></li>
+      </ul>
+    </div>
+    <img src="img/image2.jpg" alt="">
+  </div>
+</section>
+
+<!-- STRUCTURE PART I -->
+<section>
+  <div class="grid img-text">
+    <img src="img/image1.jpg" alt="">
+    <div>
+      <div class="eyebrow" data-i18n="s_part1"></div>
+      <h2 data-i18n="p1_h"></h2>
+      <p data-i18n="p1_p1"></p>
+      <p data-i18n="p1_p2"></p>
+      <p class="small"><strong data-i18n="p1_format_label"></strong> <span data-i18n="p1_format"></span></p>
+    </div>
+  </div>
+  <div class="gallery">
+    <img src="img/image4.jpg" alt="">
+    <img src="img/image8.jpg" alt="">
+    <img src="img/image9.jpg" alt="">
+    <img src="img/image14.jpg" alt="">
+    <img src="img/image30.jpg" alt="">
+    <img src="img/image7.jpg" alt="">
+  </div>
+</section>
+
+<!-- STRUCTURE PART II -->
+<section>
+  <div class="grid text-img">
+    <div>
+      <div class="eyebrow" data-i18n="s_part2"></div>
+      <h2 data-i18n="p2_h"></h2>
+      <p data-i18n="p2_p1"></p>
+      <p data-i18n="p2_p2"></p>
+      <p data-i18n="p2_p3"></p>
+    </div>
+    <img src="img/image6.jpg" alt="">
+  </div>
+</section>
+
+<!-- INSTALLATION DARK -->
+<section class="dark">
+  <div class="eyebrow" data-i18n="s_install"></div>
+  <h2 data-i18n="install_h" style="color:#f4f4f4"></h2>
+  <div class="grid two">
+    <div>
+      <h3 data-i18n="dark_h"></h3>
+      <p data-i18n="dark_p"></p>
+    </div>
+    <div>
+      <h3 data-i18n="float_h"></h3>
+      <p data-i18n="float_p1"></p>
+      <p data-i18n="float_p2"></p>
+    </div>
+  </div>
+  <div style="margin-top:80px"><img src="img/image20.jpg" alt=""></div>
+</section>
+
+<!-- CENTRAL WORK -->
+<section class="dark">
+  <div class="grid img-text">
+    <img src="img/image22.jpg" alt="">
+    <div>
+      <div class="eyebrow" data-i18n="s_central"></div>
+      <h2 data-i18n="central_h" style="color:#f4f4f4"></h2>
+      <p data-i18n="central_p1"></p>
+      <p data-i18n="central_p2"></p>
+      <p style="font-family:var(--serif);font-style:italic;font-size:42px;letter-spacing:.04em;margin-top:32px">OBNAZHAY · REVEAL</p>
+      <p data-i18n="central_p3"></p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGIC -->
+<section>
+  <div class="eyebrow" data-i18n="s_logic"></div>
+  <h2 data-i18n="logic_h"></h2>
+  <ul>
+    <li data-i18n="logic_l1"></li>
+    <li data-i18n="logic_l2"></li>
+    <li data-i18n="logic_l3"></li>
+    <li data-i18n="logic_l4"></li>
+    <li data-i18n="logic_l5"></li>
+    <li data-i18n="logic_l6"></li>
+  </ul>
+  <h3 data-i18n="tech_h"></h3>
+  <p class="small" data-i18n="tech_p1"></p>
+  <p class="small" data-i18n="tech_p2"></p>
+  <h3 data-i18n="color_h"></h3>
+  <p data-i18n="color_p"></p>
+</section>
+
+<!-- STYLING & LOCATION -->
+<section>
+  <div class="grid two">
+    <div>
+      <div class="eyebrow" data-i18n="s_styling"></div>
+      <h2 data-i18n="styling_h"></h2>
+      <ul>
+        <li data-i18n="styling_l1"></li>
+        <li data-i18n="styling_l2"></li>
+        <li data-i18n="styling_l3"></li>
+        <li data-i18n="styling_l4"></li>
+      </ul>
+    </div>
+    <div>
+      <div class="eyebrow" data-i18n="s_location"></div>
+      <h2 data-i18n="location_h"></h2>
+      <ul>
+        <li data-i18n="loc_l1"></li>
+        <li data-i18n="loc_l2"></li>
+        <li data-i18n="loc_l3"></li>
+        <li data-i18n="loc_l4"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="gallery" style="margin-top:80px">
+    <img src="img/image48.jpg" alt="">
+    <img src="img/image53.jpg" alt="">
+    <img src="img/image55.jpg" alt="">
+  </div>
+</section>
+
+<!-- PS QUOTE -->
+<section class="dark" style="padding:24vh 8vw">
+  <blockquote data-i18n="ps"></blockquote>
+</section>
+
+<footer>
+  <span class="name">Anna Godunova</span>
+  <a href="https://www.godunova.art" target="_blank">www.godunova.art</a>
+</footer>
+
+</main>
+
+<script>
+const i18n = {
+  en: {
+    hero_eyebrow:"A photographic project · directed by Anna Godunova",
+    hero_sub:"The capacity to be seen without defenses.",
+    s_concept:"Concept",
+    concept_h:"For 15 years I photographed people more beautiful than they are.",
+    concept_p1:"I knew how to turn the head, where to place the light, which frame to choose. I was a master of control. Obnazhimost is my refusal of that control.",
+    concept_p2:"Obnazhimost is not nudity. It is not a body without clothes. It is the capacity to be seen without defenses — the measure of a person's readiness to exist before the camera as they are, without a pose, without a role, without trying to please.",
+    concept_p3:"I capture not the frame, but the pause between frames. The moment when a person has forgotten they are being photographed. A blur, a half-gesture, closed eyes — everything a photographer usually deletes. I keep it.",
+    concept_p4:"Obnazhimost is not a given. It is an effort. Sometimes it fails. And in that lies the honesty of the project.",
+    s_word:"The word",
+    word_h:"Obnazhimost ≠ Nudity",
+    word_p1:"Obnazhimost is a neologism. It means the capacity to bare oneself — not physically, but existentially. The measure of a person's readiness to be seen without defenses. Not everyone is capable of it, not always, and not before everyone.",
+    word_p2:"This word is at once the project's title, its concept, and a tool of thought. It sets the frame through which everything is read.",
+    word_l1:"Obnazhimost is vulnerability as a conscious choice, not chance.",
+    word_l2:"It manifests in the pauses between poses — when a person doesn't control themselves.",
+    word_l3:"It exists only in instants that are not meant for others' eyes.",
+    s_part1:"Part I",
+    p1_h:"Obnazhimost: Between",
+    p1_p1:"Pure photography. The frames a photographer usually deletes: blur, half-gesture, closed eyes, the moment before and after the pose. Not the best frame, but the one that wasn't meant to be shown.",
+    p1_p2:"Obnazhimost lives in those moments we usually hide. Photography as a practice of selection is a form of concealment — and I invert it.",
+    p1_format_label:"Format —",
+    p1_format:"film, prints without retouching, without cropping. Black borders, technical marks. The visual language of arte povera: the honesty of the material, a refusal to embellish.",
+    s_part2:"Part II",
+    p2_h:"Obnazhimost: Intervention",
+    p2_p1:"Mixed media. The same frames, printed in large format. Physical intervention — marsh-green paint, chaotically applied to the print.",
+    p2_p2:"The color of the paint is the shade of the photographer's eyes. The author's presence, literally left on the image. Another layer of obnazhimost — the obnazhimost of the one looking.",
+    p2_p3:"What to do with another's obnazhimost once you have seen it? Defend it, appropriate it, transform it? The viewer becomes a participant in an ethical choice.",
+    s_install:"Installation",
+    install_h:"A total installation in which the viewer physically lives through the logic of obnazhimost.",
+    dark_h:"The dark room",
+    dark_p:"A fully darkened space. The viewer enters the dark — their first act of vulnerability. The eyes adjust, the body slows, the senses sharpen. Obnazhimost begins with oneself.",
+    float_h:"Floating two-sided works",
+    float_p1:"5–8 photographs on rigid panels, suspended on steel cables in the centre of the hall. Spotlight illumination — the works float in the dark.",
+    float_p2:"On one side: a photograph drenched in marsh-green paint. On the other: the clean original. The viewer chooses — walk around and see the original, or stay on the side of the intervention.",
+    s_central:"Central work",
+    central_h:"Obnazhay / Reveal",
+    central_p1:"On the end wall — a large-format canvas (150×200 cm) fully covered with marsh-green paint. Beneath it, a photograph hidden in UV-fluorescent ink, invisible in normal light.",
+    central_p2:"Beside it lie ultraviolet flashlights and one word on the wall.",
+    central_p3:"The viewer takes a flashlight, points it at the canvas — and sees a face emerging beneath the paint. Only where the beam is aimed. They will never see the whole photograph at once. Only fragments. Only through effort.",
+    s_logic:"Implementation logic",
+    logic_h:"How the installation works.",
+    logic_l1:"Darkness — the viewer loses control, becomes vulnerable themselves.",
+    logic_l2:"Two-sided works — a choice: see defence, or obnazhimost.",
+    logic_l3:"Central work — the viewer themselves decides whether to bare it or not.",
+    logic_l4:"UV flashlight — obnazhimost requires effort, closeness, choice.",
+    logic_l5:"Fragmentation — we never see another person whole.",
+    logic_l6:"Disappearance — obnazhimost exists only as long as it is being sought.",
+    tech_h:"Technical solution",
+    tech_p1:"Central work: the photograph is printed on canvas with UV-fluorescent inks (invisible in normal light). On top — marsh-green acrylic, applied by hand. Under a UV flashlight (365 nm), the inks glow through the paint. A ghostly image appears only inside the flashlight's beam.",
+    tech_p2:"Floating works: two-sided print on dibond, suspended on 0.8 mm steel cables, narrow-beam LED spotlights (15–25°, 3000K).",
+    color_h:"The colour",
+    color_p:"Marsh green is the only colour in the project. The shade of the photographer's eyes. The paint that hides the image is, literally, the gaze of the author. The viewer must look through the photographer's gaze in order to see what she saw. One colour. One gesture. One decision.",
+    s_styling:"Styling",
+    styling_h:"Natural beauty, no look.",
+    styling_l1:"Makeup and hair — natural, light, no bright accents.",
+    styling_l2:"Hair loose or neatly placed, no complex hairstyles.",
+    styling_l3:"Slightly tousled or textured for naturalness is welcome.",
+    styling_l4:"The goal: do not distract from the model's state.",
+    s_location:"Location",
+    location_h:"Calm, minimal, soft.",
+    loc_l1:"Soft natural light, through windows or curtains.",
+    loc_l2:"Enough space for movement and changing poses.",
+    loc_l3:"Minimum furniture and decor, soft textures.",
+    loc_l4:"Natural locations — female nature inscribed into natural beauty. They amplify each other.",
+    ps:"Obnazhimost exists only as long as it is being sought. It requires effort, closeness, choice. Like real vulnerability between people."
+  },
+  pt: {
+    hero_eyebrow:"Um projecto fotográfico · de Anna Godunova",
+    hero_sub:"A capacidade de ser vista sem defesas.",
+    s_concept:"Conceito",
+    concept_h:"Durante 15 anos fotografei pessoas mais belas do que são.",
+    concept_p1:"Sabia onde virar a cabeça, onde colocar a luz, que enquadramento escolher. Era mestre do controlo. Obnazhimost é a minha recusa desse controlo.",
+    concept_p2:"Obnazhimost não é nudez. Não é um corpo sem roupa. É a capacidade de ser vista sem defesas — a medida da prontidão de uma pessoa para existir diante da câmara como é, sem pose, sem papel, sem tentar agradar.",
+    concept_p3:"Capto não o enquadramento, mas a pausa entre enquadramentos. O momento em que a pessoa esqueceu que está a ser fotografada. Um borrão, um meio-gesto, olhos fechados — tudo aquilo que um fotógrafo costuma apagar. Eu guardo.",
+    concept_p4:"Obnazhimost não é um dado. É um esforço. Por vezes falha. E nisso reside a honestidade do projecto.",
+    s_word:"A palavra",
+    word_h:"Obnazhimost ≠ Nudez",
+    word_p1:"Obnazhimost é um neologismo. Significa a capacidade de se desnudar — não fisicamente, mas existencialmente. A medida da prontidão para ser vista sem defesas. Nem todos são capazes, nem sempre, nem perante todos.",
+    word_p2:"Esta palavra é, ao mesmo tempo, o título do projecto, o seu conceito e uma ferramenta de pensamento. Define o quadro através do qual tudo é lido.",
+    word_l1:"Obnazhimost é vulnerabilidade como escolha consciente, não acaso.",
+    word_l2:"Manifesta-se nas pausas entre poses — quando a pessoa não se controla.",
+    word_l3:"Existe apenas em instantes que não são destinados aos olhos dos outros.",
+    s_part1:"Parte I",
+    p1_h:"Obnazhimost: Entre",
+    p1_p1:"Fotografia pura. Os enquadramentos que um fotógrafo costuma apagar: borrão, meio-gesto, olhos fechados, o momento antes e depois da pose. Não o melhor enquadramento, mas aquele que não devia ser mostrado.",
+    p1_p2:"Obnazhimost vive nesses momentos que normalmente escondemos. A fotografia como prática de selecção é uma forma de ocultação — e eu inverto-a.",
+    p1_format_label:"Formato —",
+    p1_format:"película, impressões sem retoque, sem corte. Margens negras, marcas técnicas. A linguagem visual da arte povera: a honestidade do material, a recusa de embelezar.",
+    s_part2:"Parte II",
+    p2_h:"Obnazhimost: Intervenção",
+    p2_p1:"Técnica mista. Os mesmos enquadramentos, impressos em grande formato. Intervenção física — tinta verde-pântano, aplicada caoticamente sobre a impressão.",
+    p2_p2:"A cor da tinta é o tom dos olhos da fotógrafa. A presença da autora, literalmente deixada sobre a imagem. Outra camada de obnazhimost — a obnazhimost de quem olha.",
+    p2_p3:"O que fazer com a obnazhimost de outra pessoa, depois de a teres visto? Defendê-la, apropriá-la, transformá-la? O espectador torna-se participante de uma escolha ética.",
+    s_install:"Instalação",
+    install_h:"Uma instalação total na qual o espectador vive fisicamente a lógica da obnazhimost.",
+    dark_h:"A sala escura",
+    dark_p:"Um espaço completamente escurecido. O espectador entra na escuridão — o seu primeiro acto de vulnerabilidade. Os olhos adaptam-se, o corpo abranda, os sentidos afinam-se. Obnazhimost começa por si mesmo.",
+    float_h:"Obras suspensas, dois lados",
+    float_p1:"5–8 fotografias em painéis rígidos, suspensas em cabos de aço no centro da sala. Iluminação por focos — as obras flutuam no escuro.",
+    float_p2:"De um lado: uma fotografia coberta de tinta verde-pântano. Do outro: o original limpo. O espectador escolhe — contornar e ver o original, ou ficar do lado da intervenção.",
+    s_central:"Obra central",
+    central_h:"Obnazhay / Revela",
+    central_p1:"Na parede ao fundo — uma tela de grande formato (150×200 cm) totalmente coberta de tinta verde-pântano. Por baixo, uma fotografia escondida em tinta UV-fluorescente, invisível à luz normal.",
+    central_p2:"Ao lado, lanternas ultravioleta e uma única palavra na parede.",
+    central_p3:"O espectador pega numa lanterna, aponta-a à tela — e vê um rosto a emergir sob a tinta. Apenas onde o feixe incide. Nunca verá a fotografia inteira de uma só vez. Apenas fragmentos. Apenas através do esforço.",
+    s_logic:"Lógica de implementação",
+    logic_h:"Como funciona a instalação.",
+    logic_l1:"Escuridão — o espectador perde o controlo, torna-se ele próprio vulnerável.",
+    logic_l2:"Obras de dois lados — uma escolha: ver a defesa ou a obnazhimost.",
+    logic_l3:"Obra central — o próprio espectador decide se a desnuda ou não.",
+    logic_l4:"Lanterna UV — obnazhimost exige esforço, proximidade, escolha.",
+    logic_l5:"Fragmentação — nunca vemos outra pessoa por inteiro.",
+    logic_l6:"Desaparecimento — obnazhimost existe apenas enquanto é procurada.",
+    tech_h:"Solução técnica",
+    tech_p1:"Obra central: a fotografia é impressa sobre tela com tintas UV-fluorescentes (invisíveis à luz normal). Por cima — acrílico verde-pântano, aplicado à mão. Sob lanterna UV (365 nm), as tintas brilham através da tinta. Uma imagem fantasmagórica aparece apenas dentro do feixe.",
+    tech_p2:"Obras suspensas: impressão de dois lados em dibond, suspensa em cabos de aço de 0,8 mm, focos LED de feixe estreito (15–25°, 3000K).",
+    color_h:"A cor",
+    color_p:"Verde-pântano é a única cor do projecto. O tom dos olhos da fotógrafa. A tinta que esconde a imagem é, literalmente, o olhar da autora. O espectador tem de olhar através do olhar da fotógrafa para ver o que ela viu. Uma cor. Um gesto. Uma decisão.",
+    s_styling:"Estilismo",
+    styling_h:"Beleza natural, sem look.",
+    styling_l1:"Maquilhagem e cabelo — naturais, leves, sem acentos vivos.",
+    styling_l2:"Cabelo solto ou ajeitado, sem penteados complexos.",
+    styling_l3:"Levemente despenteado ou texturado para naturalidade é bem-vindo.",
+    styling_l4:"O objectivo: não distrair do estado da modelo.",
+    s_location:"Local",
+    location_h:"Calmo, mínimo, suave.",
+    loc_l1:"Luz natural suave, através de janelas ou cortinas.",
+    loc_l2:"Espaço suficiente para movimento e mudança de poses.",
+    loc_l3:"Mobiliário e decoração mínimos, texturas suaves.",
+    loc_l4:"Locais naturais — a natureza feminina inscrita na beleza natural. Amplificam-se mutuamente.",
+    ps:"Obnazhimost existe apenas enquanto é procurada. Exige esforço, proximidade, escolha. Como a verdadeira vulnerabilidade entre pessoas."
+  },
+  ru: {
+    hero_eyebrow:"Фотопроект · Анна Годунова",
+    hero_sub:"Способность быть увиденной без защит.",
+    s_concept:"Концепция",
+    concept_h:"15 лет я фотографировала людей красивее, чем они есть.",
+    concept_p1:"Я знала, как повернуть голову, куда поставить свет, какой кадр выбрать. Я была мастером контроля. «Обнажимость» — мой отказ от этого контроля.",
+    concept_p2:"Обнажимость — это не нагота. Это не тело без одежды. Это способность быть увиденной без защит — мера готовности человека быть перед камерой таким, какой он есть, без позы, без роли, без попытки понравиться.",
+    concept_p3:"Я фиксирую не кадр, а паузу между кадрами. Момент, когда человек забыл, что его снимают. Размытие, полужест, закрытые глаза — всё то, что фотограф обычно удаляет. Я оставляю.",
+    concept_p4:"Обнажимость — не данность. Это усилие. Иногда оно не удаётся. И в этом — честность проекта.",
+    s_word:"Слово",
+    word_h:"Обнажимость ≠ нагота",
+    word_p1:"«Обнажимость» — неологизм. Это способность обнажаться — не физически, а экзистенциально. Мера готовности быть увиденной без защит. Не каждый на это способен, не всегда и не перед каждым.",
+    word_p2:"Это слово одновременно — название проекта, концепция и инструмент мышления. Оно задаёт рамку, через которую читается всё.",
+    word_l1:"Обнажимость — уязвимость как осознанный выбор, а не случайность.",
+    word_l2:"Она проявляется в паузах между позами — когда человек себя не контролирует.",
+    word_l3:"Существует только в моменты, не предназначенные для чужих глаз.",
+    s_part1:"Часть I",
+    p1_h:"Обнажимость: Между",
+    p1_p1:"Чистая фотография. Кадры, которые фотограф обычно удаляет: размытие, полужест, закрытые глаза, момент до и после позы. Не «лучший кадр», а тот, который не должен был быть показан.",
+    p1_p2:"Обнажимость живёт в тех моментах, которые мы обычно прячем. Фотография как практика отбора — форма сокрытия. Я её переворачиваю.",
+    p1_format_label:"Формат —",
+    p1_format:"плёнка, отпечатки без ретуши и кадрирования. Чёрные поля, технические метки. Визуальный язык арте повера: честность материала, отказ украшать.",
+    s_part2:"Часть II",
+    p2_h:"Обнажимость: Вмешательство",
+    p2_p1:"Смешанная техника. Те же кадры, напечатанные в большом формате. Физическое вмешательство — болотно-зелёная краска, хаотично нанесённая на отпечаток.",
+    p2_p2:"Цвет краски — оттенок глаз фотографа. Присутствие автора, буквально оставленное на изображении. Ещё один слой обнажимости — обнажимость того, кто смотрит.",
+    p2_p3:"Что делать с чужой обнажимостью, когда ты её увидел? Защитить, присвоить, преобразить? Зритель становится участником этического выбора.",
+    s_install:"Инсталляция",
+    install_h:"Тотальная инсталляция, в которой зритель физически проживает логику обнажимости.",
+    dark_h:"Тёмный зал",
+    dark_p:"Полностью затемнённое пространство. Зритель входит в темноту — его первый акт уязвимости. Глаза привыкают, тело замедляется, чувства обостряются. Обнажимость начинается с себя.",
+    float_h:"Парящие двусторонние работы",
+    float_p1:"5–8 фотографий на жёстких панелях, подвешенных на стальных тросах в центре зала. Точечная подсветка — работы парят в темноте.",
+    float_p2:"С одной стороны — фотография, залитая болотно-зелёной краской. С другой — чистый оригинал. Зритель выбирает: обойти и увидеть оригинал — или остаться на стороне вмешательства.",
+    s_central:"Центральная работа",
+    central_h:"Обнажай / Reveal",
+    central_p1:"На торцевой стене — крупноформатный холст (150×200 см), полностью покрытый болотно-зелёной краской. Под краской спрятана фотография, напечатанная УФ-флуоресцентной краской — невидимая при обычном свете.",
+    central_p2:"Рядом лежат ультрафиолетовые фонарики и одно слово на стене.",
+    central_p3:"Зритель берёт фонарик, направляет на холст — и видит лицо, проступающее сквозь краску. Только там, куда направлен луч. Целиком фотографию он никогда не увидит. Только фрагменты. Только через усилие.",
+    s_logic:"Логика реализации",
+    logic_h:"Как работает инсталляция.",
+    logic_l1:"Темнота — зритель теряет контроль, сам становится уязвимым.",
+    logic_l2:"Двусторонние работы — выбор: видеть защиту или обнажимость.",
+    logic_l3:"Центральная работа — зритель сам решает, обнажать её или нет.",
+    logic_l4:"УФ-фонарик — обнажимость требует усилия, близости, выбора.",
+    logic_l5:"Фрагментарность — мы никогда не видим другого целиком.",
+    logic_l6:"Исчезновение — обнажимость существует только пока её ищут.",
+    tech_h:"Техническое решение",
+    tech_p1:"Центральная работа: фотография напечатана на холсте УФ-флуоресцентными красками (невидимыми при обычном свете). Сверху — болотно-зелёный акрил, нанесённый вручную. Под УФ-фонарём (365 нм) краски начинают светиться сквозь слой. Призрачное изображение появляется только внутри луча фонарика.",
+    tech_p2:"Парящие работы: двусторонняя печать на дибонде, подвес на стальных тросах 0,8 мм, узколучевые LED-споты (15–25°, 3000K).",
+    color_h:"Цвет",
+    color_p:"Болотно-зелёный — единственный цвет проекта. Оттенок глаз фотографа. Краска, скрывающая изображение, — это, буквально, взгляд автора. Чтобы увидеть то, что увидела она, зритель должен смотреть сквозь её взгляд. Один цвет. Один жест. Одно решение.",
+    s_styling:"Стайлинг",
+    styling_h:"Естественная красота, без лука.",
+    styling_l1:"Макияж и волосы — естественные, лёгкие, без ярких акцентов.",
+    styling_l2:"Волосы распущены или аккуратно убраны, без сложных причёсок.",
+    styling_l3:"Лёгкая взъерошенность или текстура для естественности — приветствуются.",
+    styling_l4:"Цель: не отвлекать от состояния модели.",
+    s_location:"Локация",
+    location_h:"Спокойно, минимально, мягко.",
+    loc_l1:"Мягкий естественный свет, через окна или занавески.",
+    loc_l2:"Достаточно места для движения и смены поз.",
+    loc_l3:"Минимум мебели и декора, мягкие текстуры.",
+    loc_l4:"Природные локации — женская природа, вписанная в природную красоту. Они усиливают друг друга.",
+    ps:"Обнажимость существует только пока её ищут. Она требует усилия, близости, выбора. Как настоящая уязвимость между людьми."
+  }
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+  document.querySelectorAll("header nav button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang===lang);
+  });
+  try{localStorage.setItem("obz_lang",lang)}catch(e){}
+}
+document.querySelectorAll("header nav button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+const saved = (()=>{try{return localStorage.getItem("obz_lang")}catch(e){return null}})();
+const initial = saved || (navigator.language||"en").slice(0,2);
+setLang(["en","pt","ru"].includes(initial)?initial:"en");
+</script>
+</body>
+</html>
